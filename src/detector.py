@@ -1,0 +1,8 @@
+"""Obstacle detector for the Kestrel-1 camera."""
+
+THRESHOLD_CM = 30
+
+
+def detect_obstacle(distance_cm, threshold_cm=THRESHOLD_CM):
+    """Return True when something is closer than threshold_cm."""
+    return distance_cm < threshold_cm
