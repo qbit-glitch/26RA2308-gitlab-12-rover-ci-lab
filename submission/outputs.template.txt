@@ -1,0 +1,118 @@
+##############################################################################
+#  CI/CD LAB  -  SUBMISSION FILE
+#
+#  1. Copy this file:    cp submission/outputs.template.txt submission/outputs.txt
+#  2. Do the tasks in ASSIGNMENT.md, in order.
+#  3. After each command, paste what the terminal printed UNDER the matching
+#     "--- N.M" line, replacing the line "(paste output here)".
+#  4. Do not edit or delete the "=== TASK" and "--- N.M" lines.
+#  5. Check your work at any time:    python3 tests/grade.py
+##############################################################################
+
+Name   :
+Reg No :
+
+
+=== TASK 1 : The CI workflow  (20 marks) ===
+
+--- 1.1  git push -u origin main ---
+(paste output here)
+
+--- 1.2  cat .github/workflows/ci.yml ---
+(paste output here)
+
+--- 1.3  git add .github/workflows/ci.yml   then   git commit -m "ci: add lint and test workflow" ---
+(paste output here)
+
+--- 1.4  git push origin main ---
+(paste output here)
+
+--- 1.5  gh run list   (wait until the STATUS is no longer in progress) ---
+(paste output here)
+
+# Q1 (type the answer on the ANSWER-1 line below): which runner does the job run on? (the value of runs-on)
+ANSWER-1 :
+
+
+=== TASK 2 : Run it by hand  (20 marks) ===
+
+--- 2.1  git commit -am "ci: add manual workflow_dispatch trigger" ---
+(paste output here)
+
+--- 2.2  git push origin main ---
+(paste output here)
+
+--- 2.3  gh workflow run ci.yml ---
+(paste output here)
+
+--- 2.4  gh run list --limit 3 ---
+(paste output here)
+
+
+=== TASK 3 : Red, then green  (25 marks) ===
+
+--- 3.1  git commit -am "feat(vision): add distance helper" ---
+(paste output here)
+
+--- 3.2  git push origin main ---
+(paste output here)
+
+--- 3.3  gh run list --limit 1   (wait until it has finished) ---
+(paste output here)
+
+--- 3.4  gh run view $RUN --log-failed ---
+(paste output here)
+
+--- 3.5  git commit -am "fix(vision): remove unused import" ---
+(paste output here)
+
+--- 3.6  git push origin main ---
+(paste output here)
+
+--- 3.7  gh run list --limit 3   (wait until the newest has finished) ---
+(paste output here)
+
+# Q2 (type the answer on the ANSWER-2 line below): which flake8 code did the failed run report? (a letter and three digits)
+ANSWER-2 :
+
+
+=== TASK 4 : The badge, a tag and a release  (20 marks) ===
+
+--- 4.1  git commit -am "docs: add CI status badge to README" ---
+(paste output here)
+
+--- 4.2  git push origin main ---
+(paste output here)
+
+--- 4.3  git tag   then   git cat-file -t v1.0.0 ---
+(paste output here)
+
+--- 4.4  git push origin v1.0.0 ---
+(paste output here)
+
+--- 4.5  gh release create v1.0.0 --title "v1.0.0" --notes "Initial stable release." ---
+(paste output here)
+
+--- 4.6  gh release list ---
+(paste output here)
+
+# Q3 (type the answer on the ANSWER-3 line below): which part of MAJOR.MINOR.PATCH changes when a release breaks backward compatibility?
+ANSWER-3 :
+
+
+=== TASK 5 : Deploy only on a tag  (15 marks) ===
+
+--- 5.1  git commit -am "ci: deploy a build artifact when a tag is pushed" ---
+(paste output here)
+
+--- 5.2  git push origin main ---
+(paste output here)
+
+--- 5.3  git push origin v1.1.0 ---
+(paste output here)
+
+--- 5.4  gh run list --limit 3   (wait until the newest has finished) ---
+(paste output here)
+
+--- 5.5  gh run view $RUN ---
+(paste output here)
